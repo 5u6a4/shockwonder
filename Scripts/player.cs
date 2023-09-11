@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
+    float ShockwonderLength;
+    float speed;
+
     // Start is called before the first frame update
     void Start()
     {
