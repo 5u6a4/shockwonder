@@ -6,7 +6,6 @@ public class player : MonoBehaviour
 {
     float ShockwonderLength;
     float speed;
-    bool shockwonderFlag;
 
     // Start is called before the first frame update
     void Start()
