@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    float ShockwonderLength;
+    //float ShockwonderLength;
     float speed;
     private bool shokuwan_flag;
     public GameObject shokuwan;
@@ -23,7 +23,7 @@ public class player : MonoBehaviour
             if (shokuwan_flag)
             {
                 Vector3 nowPos = this.transform.position;
-                Instantiate(shokuwan, nowPos, Quaternion.identity);
+                //Instantiate(shokuwan, nowPos, Quaternion.identity);
                 shokuwan_flag = false;
             }
         }
