@@ -7,9 +7,19 @@ public class shokuwan : MonoBehaviour
     public static shokuwan instance;
     private Rigidbody rb;
     public float velocity = 100f;
+    private float shokuwan_length;
     private Vector3 nowPos;
+
     public bool isAttatched;
 
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            Debug.Log("working");
+            instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
