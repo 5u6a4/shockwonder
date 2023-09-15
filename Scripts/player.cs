@@ -6,23 +6,28 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    float ShockwonderLength;
     float speed;
     private bool shokuwan_flag;
     private bool stay_flag;
-    public GameObject shokuwan;
+    public GameObject sw;
     private Rigidbody rb;
 
     private Vector3 distination;
 
+    //shokuwan classはshokuwan.csに存在 
+    shokuwan shokuwanScript;
+
 
     [SerializeField] private Vector3 localGravity;
-    shokuwan shokuwanScript;
+
     //nakamuraAtsushi come now !!
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+
         shokuwan_flag = true;
         rb = this.GetComponent<Rigidbody>();
         rb.useGravity = false;
@@ -45,7 +50,7 @@ public class player : MonoBehaviour
             if (shokuwan_flag)
             {
                 Vector3 nowPos = this.transform.position;
-                Instantiate(shokuwan, nowPos, Quaternion.identity);
+                Instantiate(sw, nowPos, Quaternion.identity);
                 shokuwan_flag = false;
                 Debug.Log("shot");
             }
@@ -61,8 +66,13 @@ public class player : MonoBehaviour
     }
     void Check()
     {
-        shokuwanScript = shokuwan.GetComponent<shokuwan>();
-        stay_flag = shokuwanScript.isAttatched;
+
+        shokuwanScript = sw.GetComponent<shokuwan>();
+        if (shokuwan.instance != null)//　<-　天才「bool変数にnull代入回避」
+        {
+            stay_flag = shokuwan.instance.isAttatched;
+        }
+
         Debug.Log(stay_flag);
     }
 
@@ -70,7 +80,7 @@ public class player : MonoBehaviour
     {
         if (stay_flag)
         {
-            distination = shokuwan.gameObject.transform.position;
+            distination = sw.gameObject.transform.position;
             rb.AddForce(distination.x - rb.position.x, distination.y - rb.position.y, 0);
         }
         else
@@ -80,5 +90,3 @@ public class player : MonoBehaviour
 
     }
 }
-
-
